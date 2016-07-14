@@ -29,14 +29,12 @@ class SudokuGame
   end
 
   def get_val
-    val = nil
-    until val && valid_val?(val)
+    loop do
       puts "Please enter a value between 1 and 9 (0 to clear the tile)"
       print "> "
-      # byebug
-      val = parse_pos(gets.chomp)
+      val = parse_val(gets.chomp)
+      return val if valid_val?(val)
     end
-    val
   end
 
   def parse_pos(string)
@@ -49,8 +47,8 @@ class SudokuGame
 
   def play_turn
     board.render
-    val = get_pos
-    pos = get_val
+    pos = get_pos
+    val = get_val
     board[pos] = val
   end
 
