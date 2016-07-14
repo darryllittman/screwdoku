@@ -33,7 +33,8 @@ class SudokuGame
     until val && valid_val?(val)
       puts "Please enter a value between 1 and 9 (0 to clear the tile)"
       print "> "
-      val = parse_val(gets.chomp)
+      # byebug
+      val = parse_pos(gets.chomp)
     end
     val
   end
