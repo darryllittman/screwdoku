@@ -15,7 +15,6 @@ class SudokuGame
   end
 
   def get_position
-    debugger
     p = nil
     until p && valid_position?(p)
       puts "Please enter a position on the board (e.g., '3,4')"
@@ -52,15 +51,18 @@ class SudokuGame
   end
 
   def process_parameters
-    pos_to_val(get_position, get_value)
+    set_position(get_position, get_value)
   end
 
-  def pos_to_val(p, v)
+  def set_position(p, v)
     board[p] = v
   end
 
   def run
-    process_parameters until solved?
+    until solved?
+      board.render
+      process_parameters
+    end
     puts "Congratulations, you win!"
   end
 
